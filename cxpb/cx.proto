@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package cxpb;
+
+message CX {
+  repeated Node nodes = 1;
+  repeated Edge edges = 2;
+  repeated EdgeAttribute edgeAttributes = 3;
+  repeated NodeAttribute nodeAttributes = 4;
+  repeated NetworkAttribute networkAttributes = 5;
+  repeated CartesianLayout cartesianLayouts = 6;
+  repeated NdexStatus ndexStatus = 7;
+  repeated CyHiddenAttribute cyHiddenAttributes = 8;
+  repeated CyView cyViews = 9;
+  repeated CySubNetwork cySubNetworks = 10;
+  repeated CyVisualProperty cyVisualProperties = 11;
+  repeated CyTableColumn cyTablecolumns = 12;
+}
+
+message Node {
+  int64 id = 1 [ json_name = "@id" ];
+  string name = 2 [ json_name = "n" ];
+  string represents = 3 [ json_name = "r" ];
+}
+
+message Edge {
+  int64 id = 1 [ json_name = "@id" ];
+  int64 sourceId = 2 [ json_name = "s" ];
+  int64 targetId = 3 [ json_name = "t" ];
+  string interaction = 4 [ json_name = "i" ];
+}
+
+message NodeAttribute {
+  int64 nodeId = 1 [ json_name = "po" ];
+  string name = 2 [ json_name = "n" ];
+  string value = 3 [ json_name = "v" ];
+  string type = 4 [ json_name = "d" ];
+  int64 subnetId = 5 [ json_name = "s" ];
+}
+
+message EdgeAttribute {
+  int64 edgeId = 1 [ json_name = "po" ];
+  string name = 2 [ json_name = "n" ];
+  string value = 3 [ json_name = "v" ];
+  string type = 4 [ json_name = "d" ];
+  int64 subnetId = 5 [ json_name = "s" ];
+}
+
+message NetworkAttribute {
+  int64 edgeId = 1 [ json_name = "po" ];
+  string name = 2 [ json_name = "n" ];
+  string value = 3 [ json_name = "v" ];
+  string type = 4 [ json_name = "d" ];
+  int64 subnetId = 5 [ json_name = "s" ];
+}
+
+message CartesianLayout {
+  int64 nodeid = 1;
+  double x = 2;
+  double y = 3;
+  int64 viewid = 4;
+}
+
+message NdexStatus {
+  string externalId = 1;
+  int64 creationTime  = 2;
+  int64 modificationTime = 3;
+  string visibility = 4;
+  bool published = 5;
+  int64 nodeCount = 6;
+  int64 edgeCount = 7;
+  string owner = 8;
+  string ndexServerURI = 9;
+  bool readOnly = 10;
+}
+
+message CyHiddenAttribute {
+  string name = 1 [ json_name = "n" ];
+  string value = 2 [ json_name = "v" ];
+  string type = 3 [ json_name = "d" ];
+}
+
+message CyTableColumn {
+  string name = 1 [ json_name = "n" ];
+  string type = 2 [ json_name = "d" ];
+  string appliesTo = 3 [ json_name = "applies_to" ];
+}
+
+message CySubNetwork {
+  int64 id = 1 [ json_name = "@id" ];
+}
+
+message CyView {
+  int64 id = 1 [ json_name = "@id" ];
+}
+
+message CyVisualProperty {
+  int64 viewId = 1 [ json_name = "view" ];
+  string propertiesOf = 2  [ json_name = "properties_of" ];
+  int64 applies_to = 3 [ json_name = "applies_to" ];
+}
+
+
